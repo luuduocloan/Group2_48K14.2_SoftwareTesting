@@ -19,15 +19,15 @@ public class TestCase06 extends Preparation {
         HomePage homePage = new HomePage().open();
 
         LoginPage loginPage = homePage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME,Constant.PASSWORD);
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         softAssert.assertEquals(loginPage.getTicketPriceTabText(), "Ticket price", "Ticket tab price not display");
         softAssert.assertEquals(loginPage.getMyTicketTabText(), "My ticket", "Book ticket tab not display");
         softAssert.assertEquals(loginPage.getLogoutTabText(), "Logout", "logout tab not display");
         MyTicket myTicket = loginPage.goToMyTicket();
-        softAssert.assertEquals(myTicket.getPageTitleText(),"Manage Tickets","Message is not displayed as expected.");
+        softAssert.assertEquals(myTicket.getPageTitleText(), "Manage Tickets", "Message is not displayed as expected.");
         ChangePassword changePassword = loginPage.goToChangePassWord();
-        softAssert.assertEquals(changePassword.getPageTitleText(),"Change password","Message is not displayed as expected.");
+        softAssert.assertEquals(changePassword.getPageTitleText(), "Change password", "Message is not displayed as expected.");
         softAssert.assertAll();
     }
 }

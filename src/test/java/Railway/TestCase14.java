@@ -12,9 +12,9 @@ import java.util.Map;
 public class TestCase14 extends Preparation {
 
     @Test
-    public  void TC14() {
+    public void TC14() {
 
-        System.out.println("User can book 1 ticket at a time");// sua
+        System.out.println("User can book 1 ticket at a time");
         SoftAssert softAssert = new SoftAssert();
         String selectDate = "4/30/2025";
         String selectDepartStation = "Sài Gòn";
@@ -24,19 +24,19 @@ public class TestCase14 extends Preparation {
 
         HomePage homePage = new HomePage().open();
         LoginPage loginPage = homePage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME,Constant.PASSWORD);
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         BookTicketPage bookTicketPage = loginPage.goToBookTicket();
 
-        String bookTicketSuccessMessageActual = bookTicketPage.bookTicketPage(selectDate,selectDepartStation,selectArriveStation,selectSeatType,selectTicketAmount).getSuccessMessage();
+        String bookTicketSuccessMessageActual = bookTicketPage.bookTicketPage(selectDate, selectDepartStation, selectArriveStation, selectSeatType, selectTicketAmount).getSuccessMessage();
         String bookTicketSuccessMessageExpect = "Ticket booked successfully!";
 
-        Map<String,String> ticketInformation = bookTicketPage.getTicketInformation();
-        softAssert.assertEquals(bookTicketSuccessMessageActual,bookTicketSuccessMessageExpect,"TEST FAIL: Error message is not displayed as expected.");
-        softAssert.assertEquals(ticketInformation.get("Depart Date"),selectDate,"TEST FAIL: Ticket information is not displayed correctly");
-        softAssert.assertEquals(ticketInformation.get("Depart Station"),selectDepartStation,"TEST FAIL: Ticket information is not displayed correctly");
-        softAssert.assertEquals(ticketInformation.get("Arrive Station"),selectArriveStation,"TEST FAIL: Ticket information is not displayed correctly");
-        softAssert.assertEquals(ticketInformation.get("Seat Type"),selectSeatType,"TEST FAIL: Ticket information is not displayed correctly");
-        softAssert.assertEquals(ticketInformation.get("Amount"),selectTicketAmount,"TEST FAIL: Ticket information is not displayed correctly");
+        Map<String, String> ticketInformation = bookTicketPage.getTicketInformation();
+        softAssert.assertEquals(bookTicketSuccessMessageActual, bookTicketSuccessMessageExpect, "TEST FAIL: Error message is not displayed as expected.");
+        softAssert.assertEquals(ticketInformation.get("Depart Date"), selectDate, "TEST FAIL: Ticket information is not displayed correctly");
+        softAssert.assertEquals(ticketInformation.get("Depart Station"), selectDepartStation, "TEST FAIL: Ticket information is not displayed correctly");
+        softAssert.assertEquals(ticketInformation.get("Arrive Station"), selectArriveStation, "TEST FAIL: Ticket information is not displayed correctly");
+        softAssert.assertEquals(ticketInformation.get("Seat Type"), selectSeatType, "TEST FAIL: Ticket information is not displayed correctly");
+        softAssert.assertEquals(ticketInformation.get("Amount"), selectTicketAmount, "TEST FAIL: Ticket information is not displayed correctly");
         softAssert.assertAll();
     }
 }

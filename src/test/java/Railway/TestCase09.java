@@ -15,11 +15,11 @@ public class TestCase09 extends Preparation {
         HomePage homePage = new HomePage().open();
 
         LoginPage loginPage = homePage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME,Constant.PASSWORD);
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
-        ChangePassword changePassword  = loginPage.goToChangePassWord();
-        String actualMsg = changePassword.changePassword("0987654321","0987654321","0987654321").getChangePasswordMsg();
-        String expectedMsg =  "Your password has been updated!";
+        ChangePassword changePassword = loginPage.goToChangePassWord();
+        String actualMsg = changePassword.changePassword("0987654321", "0987654321", "0987654321").getChangePasswordMsg();
+        String expectedMsg = "Your password has been updated!";
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected.");
     }
 }

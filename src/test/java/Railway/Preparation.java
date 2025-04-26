@@ -13,8 +13,9 @@ public class Preparation {
         Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().maximize();
     }
+
     @AfterMethod
-    public void afterMethod(){
+    public void afterMethod() {
         System.out.println("Post-condition");
 
         Constant.WEBDRIVER.quit();

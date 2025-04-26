@@ -5,7 +5,7 @@ import PageObjects.Railway.ForgotPassword;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;
 
-public class TestCase13 extends Preparation{
+public class TestCase13 extends Preparation {
 
     @Test
     public void TC13() {

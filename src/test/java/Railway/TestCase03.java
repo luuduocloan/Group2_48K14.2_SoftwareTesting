@@ -15,7 +15,7 @@ public class TestCase03 extends Preparation {
 
         LoginPage loginPage = homePage.gotoLoginPage();
         String actualMsg = loginPage.login(Constant.USERNAME, "123").getErrorMassage().trim();
-        String expectedMsg =  "There was a problem with your login and/or errors exist in your form.";
+        String expectedMsg = "There was a problem with your login and/or errors exist in your form.";
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected.");
     }
 }

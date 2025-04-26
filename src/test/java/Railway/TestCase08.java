@@ -15,8 +15,8 @@ public class TestCase08 extends Preparation {
         HomePage homePage = new HomePage().open();
 
         LoginPage loginPage = homePage.gotoLoginPage();
-        String actualMsg = loginPage.login(Constant.USERNAME,Constant.PASSWORD).getWelcomeMessage();
-        String expectedMsg =  "Invalid username or password. Please try again.";
+        String actualMsg = loginPage.login(Constant.USERNAME, Constant.PASSWORD).getWelcomeMessage();
+        String expectedMsg = "Invalid username or password. Please try again.";
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected.");
     }
 }

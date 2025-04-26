@@ -14,8 +14,8 @@ public class TestCase07 extends Preparation {
 
         RegisterPage registerPage = homePage.gotoRegisterPage();
 
-        String actualMsg =  registerPage.register("ktkhongdauthuong@gmail.com","testingnothuong","testingnothuong","123456789").getWelcomeRegisterMsg();
-        String expectedMsg =  "Thank you for registering your account";
+        String actualMsg = registerPage.register("ktkhongdauthuong@gmail.com", "testingnothuong", "testingnothuong", "123456789").getWelcomeRegisterMsg();
+        String expectedMsg = "Thank you for registering your account";
         Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected.");
     }
 }

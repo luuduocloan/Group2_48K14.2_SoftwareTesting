@@ -8,20 +8,20 @@ import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;
 import PageObjects.Railway.TimeTablePage;
 
-public class TestCase15 extends Preparation{
+public class TestCase15 extends Preparation {
     @Test
     public void TC15() {
         System.out.println("TC15 - User can open 'Book ticket' page by clicking on 'Book ticket' link in 'Train timetable' page");
         HomePage homePage = new HomePage().open();
         LoginPage loginPage = homePage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME,Constant.PASSWORD);
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         TimeTablePage timeTablePage = loginPage.goToTimeTablePage();
-        timeTablePage.clickBookTicketLink("Huế","Sài Gòn");
+        timeTablePage.clickBookTicketLink("Huế", "Sài Gòn");
 
         BookTicketPage bookTicketPage = new BookTicketPage();
-        Assert.assertEquals(bookTicketPage.isDepartValuesCorrect("Huế"),true,"Depart from is not correct");
-        Assert.assertEquals(bookTicketPage.isArriveValuesCorrect("Sài Gòn"),true,"Arrive at is not correct");
+        Assert.assertEquals(bookTicketPage.isDepartValuesCorrect("Huế"), true, "Depart from is not correct");
+        Assert.assertEquals(bookTicketPage.isArriveValuesCorrect("Sài Gòn"), true, "Arrive at is not correct");
 
     }
 }

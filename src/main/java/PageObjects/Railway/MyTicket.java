@@ -13,49 +13,47 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MyTicket extends GeneralPage{
+public class MyTicket extends GeneralPage {
 
     //locators
     private final By _btnMyTicket = By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']");
-    // Tìm tất cả các thẻ <input> có giá trị "Cancel"
-    private  final By cancelButtonElements = By.xpath("//input[@value='Cancel']");
+    private final By cancelButtonElements = By.xpath("//input[@value='Cancel']");
 
     //elements
     public WebElement getBtnMyTicket() {
         return Constant.WEBDRIVER.findElement(_btnMyTicket);
     }
-    public  List<WebElement> getCancelButtons () {
+
+    public List<WebElement> getCancelButtons() {
         return Constant.WEBDRIVER.findElements(cancelButtonElements);
     }
 
     //methods:
-    // Mở trang "My Ticket"
-    public MyTicket myTicket()
-    {
+    // Open "My Ticket" page
+    public MyTicket myTicket() {
         this.getBtnMyTicket().click();
 
         WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, Duration.ofSeconds(15));
-        // Đợi một phần tử đặc trưng của trang "My Ticket" xuất hiện
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@value='Cancel']")));
 
         return new MyTicket();
     }
 
-    // Lấy danh sách ID từ các nút Cancel
+    // Get list of IDs from Cancel buttons
     public List<String> getIds() {
         List<WebElement> cancelButtons = getCancelButtons();
         List<String> ids = new ArrayList<>();
         for (WebElement button : cancelButtons) {
             String onClickValue = button.getAttribute("onclick");
-            if(onClickValue !=null) {
-                 String id = onClickValue.replaceAll("\\D+", ""); // Loại bỏ tất cả các ký tự không phải số
-                 ids.add(id);
+            if (onClickValue != null) {
+                String id = onClickValue.replaceAll("\\D+", "");
+                ids.add(id);
             }
         }
-          return ids;
+        return ids;
     }
 
-    // Lấy ngẫu nhiên 1 ID từ danh sách
+    // Get a random ticket ID from the list
     public String getAnRandomId() {
         Random random = new Random();
         List<String> ids = getIds();
@@ -64,14 +62,14 @@ public class MyTicket extends GeneralPage{
         return ids.get(randomIndex);
     }
 
-    // Hủy vé theo ID
-    public  MyTicket cancelTicketWithId(String id) {
+    // Cancel a ticket by ID
+    public MyTicket cancelTicketWithId(String id) {
         WebElement cancelButton = Constant.WEBDRIVER.findElement(By.xpath("//input[@value='Cancel' and contains(@onclick, 'DeleteTicket(" + id + ")')]"));
         JavascriptExecutor js = (JavascriptExecutor) Constant.WEBDRIVER;
-        js.executeScript("arguments[0].scrollIntoView(true);",cancelButton);
+        js.executeScript("arguments[0].scrollIntoView(true);", cancelButton);
         cancelButton.click();
         Alert alert = Constant.WEBDRIVER.switchTo().alert();
         alert.accept();
-        return  new MyTicket();
+        return new MyTicket();
     }
 }

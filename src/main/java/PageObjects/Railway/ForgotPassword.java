@@ -14,13 +14,13 @@ public class ForgotPassword {
     public WebElement getTxtEmailAddress() {
         return Constant.WEBDRIVER.findElement(_txtEmailAddress);
     }
+
     public WebElement getSendInstruction() {
         return Constant.WEBDRIVER.findElement(_btnSendInstruction);
     }
 
     //methods
-    public ForgotPassword forgotPassword(String email)
-    {
+    public ForgotPassword forgotPassword(String email) {
         this.getTxtEmailAddress().sendKeys(email);
         this.getSendInstruction().click();
         return new ForgotPassword();

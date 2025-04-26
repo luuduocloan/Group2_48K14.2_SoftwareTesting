@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-public class RegisterPage extends GeneralPage{
+public class RegisterPage extends GeneralPage {
     //locator
     private final By _usernameInput = By.xpath("//input[@id='email']");
     private final By _passwordInput = By.xpath("//input[@id='password']");
@@ -17,20 +17,24 @@ public class RegisterPage extends GeneralPage{
     public WebElement getUsernameInput() {
         return Constant.WEBDRIVER.findElement(_usernameInput);
     }
+
     public WebElement getPasswordInput() {
         return Constant.WEBDRIVER.findElement(_passwordInput);
     }
+
     public WebElement getConfirmPasswordInput() {
         return Constant.WEBDRIVER.findElement(_confirmPasswordInput);
     }
+
     public WebElement getPidInput() {
         return Constant.WEBDRIVER.findElement(_pidInput);
     }
+
     public WebElement getBtnRegister() {
         return Constant.WEBDRIVER.findElement(_btnRegister);
     }
 
-//    method
+    //    method
     public RegisterPage register(String username, String password, String confirmPassword, String pid) {
         this.getUsernameInput().sendKeys(username);
         this.getPasswordInput().sendKeys(password);
